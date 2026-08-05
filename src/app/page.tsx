@@ -281,7 +281,7 @@ export default function Home() {
                     <TicketIcon className="w-5 h-5 text-white/80" />
                   </div>
 
-                  <h3 className="text-xl font-bold mb-6">コワーキングスペース1日利用券</h3>
+                  <h3 className="text-xl font-bold mb-6">1hour ticket</h3>
 
                   {hasTicket ? (
                     <div>
@@ -530,7 +530,7 @@ export default function Home() {
             <h3 className="text-base font-bold text-slate-900 mb-2">本当に消費しますか？</h3>
 
             <p className="text-xs text-slate-500 leading-relaxed mb-6">
-              誤操作防止の確認です。コワーキングスペース1日利用分として、
+              誤操作防止の確認です。1hour分として、
               <strong className="text-slate-800 font-bold">{selectedSlots}枠</strong>
               を今すぐ消費します。
             </p>
