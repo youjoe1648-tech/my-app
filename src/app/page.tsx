@@ -219,18 +219,21 @@ export default function Home() {
 
         {/* Header App Brand */}
         <header className="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center text-white shadow-md shadow-emerald-200">
-              <TicketIcon className="w-5 h-5" />
-            </div>
+          <div className="flex items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="GARAGE Logo"
+              className="h-11 w-auto object-contain mr-1"
+            />
             <div>
-              <h1 className="font-bold text-lg text-slate-900 tracking-tight">コワーキング・パス</h1>
-              <p className="text-xs text-slate-400 font-medium">DIGITAL TICKET MVP</p>
+              <h1 className="font-bold text-base text-slate-900 tracking-tight leading-tight">デジタルサブスク回数券</h1>
+              <p className="text-[10px] text-slate-400 font-bold tracking-wider">GARAGE MACHIDA MVP</p>
             </div>
           </div>
           {currentUser && (
-            <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/60 rounded-full py-1.5 px-3.5">
-              <UserIcon className="w-4 h-4 text-slate-400" />
+            <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200/60 rounded-full py-1.5 px-3">
+              <UserIcon className="w-3.5 h-3.5 text-slate-400" />
               <span className="text-xs font-semibold text-slate-600">{currentUser.name}</span>
             </div>
           )}
@@ -273,7 +276,7 @@ export default function Home() {
 
                   <div className="flex justify-between items-start mb-4">
                     <span className="bg-white/20 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                      デジタル回数券
+                      デジタルサブスク回数券
                     </span>
                     <TicketIcon className="w-5 h-5 text-white/80" />
                   </div>
@@ -341,6 +344,7 @@ export default function Home() {
                             key={num}
                             type="button"
                             disabled={isDisabled}
+                            data-testid={`slot-btn-${num}`}
                             onClick={() => setSelectedSlots(num)}
                             className={`py-3.5 rounded-xl font-bold text-sm transition-all flex flex-col items-center justify-center ${
                               isSelected
@@ -363,6 +367,7 @@ export default function Home() {
                     {/* Submit Consumer Button */}
                     <button
                       type="button"
+                      data-testid="consume-btn"
                       onClick={() => setIsConfirmOpen(true)}
                       className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-emerald-100 flex items-center justify-center gap-2 active:scale-[0.98]"
                     >
@@ -437,26 +442,28 @@ export default function Home() {
                         value={adminTarget}
                         onChange={(e) => setAdminTarget(e.target.value)}
                         placeholder="yamada@example.com"
+                        data-testid="admin-target-input"
                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white text-slate-700 font-medium placeholder-slate-300"
                       />
                     </div>
 
                     <div className="bg-emerald-50/50 border border-emerald-100/60 p-3.5 rounded-xl flex items-start gap-2.5">
                       <CheckCircle className="w-4.5 h-4.5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <p className="text-[11px] text-slate-500 leading-normal font-medium">
-                        付与すると、対象の会員に対して<strong className="text-slate-700 font-bold">1冊（33枠 / 3,300円相当）</strong>のデジタル回数券が新規追加され、即座に利用可能となります。
+                      <p className="text-[11px] text-slate-505 leading-normal font-medium">
+                        付与すると、対象の会員に対して<strong className="text-slate-700 font-bold">1冊（33枠 / 3,300円相当）</strong>のデジタルサブスク回数券が新規追加され、即座に利用可能となります。
                       </p>
                     </div>
 
                     <button
                       type="submit"
                       disabled={submitting}
+                      data-testid="issue-btn"
                       className="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2 active:scale-[0.98]"
                     >
                       {submitting ? (
                         <Loader2 className="w-4 h-4 animate-spin" />
                       ) : (
-                        <span>33枠の新規回数券を付与する</span>
+                        <span>33枠の新規デジタルサブスク回数券を付与する</span>
                       )}
                     </button>
                   </form>
@@ -508,7 +515,7 @@ export default function Home() {
 
         {/* Brand footer */}
         <footer className="mt-auto pt-6 text-center text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
-          © 2026 DIGITAL TICKET CO-WORKING INC.
+          © 2026 GARAGE CO-WORKING SPACE MACHIDA
         </footer>
       </main>
 
